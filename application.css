@@ -1,0 +1,140 @@
+#loading {
+	display: block;
+	position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+	background: rgba(255, 255, 255, .7) 
+                url('image/loading.gif') 
+                50% 50% 
+                no-repeat;
+}
+
+header {
+    font-size: 12px;
+    height: 125px;
+}
+
+header .row {
+    margin-bottom: 0px;
+}
+
+header #project-logo {
+    max-width: 200px;
+}
+
+header blockquote {
+    border-left: 5px solid #019934;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+header #project-authors img {
+    max-width: 50px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.modal {
+    max-height: 90%;
+    width: 90%;
+}
+
+.modal.modal-fixed-footer {
+    height: 90%;
+}
+
+#amcharts-force-directed-tree {
+    height: calc(100vh - 125px);
+}
+
+#datatable_length {
+    display: none;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    float: inherit;
+    text-align: inherit;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    padding: 0px;
+}
+
+#datatable .composition-icon {
+	margin-right: 4px;
+	margin-top: 4px;
+	max-width: 18px;
+}
+
+@media screen and (max-width:992px) and (min-width:600px) {
+    header #project-logo {
+        max-width: 150px;
+    }
+    header #project-authors img {
+        max-width: 40px;
+        margin-left: 10px;
+    }
+    #datatable>thead>tr>th {
+		width: 100% !important;
+		height: 40px !important;
+		padding: 0px !important;
+		border-bottom: 1px solid #ccc;
+	}
+	#datatable>tbody>tr>td {
+		width: 100% !important;
+		height: 40px !important;
+		padding: 0px !important;
+	}
+	#datatable>thead>tr {
+		padding: 0px !important;
+	}
+	#datatable>thead {
+		width: 25% !important;
+	}
+	#datatable>tbody {
+		width: 74% !important;
+	}
+	table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
+		border-top: 1px solid #ddd !important;
+	}
+}
+
+@media screen and (max-width:599px) {
+	header {
+		font-size: 11px;
+	}
+    header #project-logo {
+        max-width: 125px;
+    }
+    header #project-authors img {
+        max-width: 30px;
+        margin-left: 2px;
+    }
+    #datatable>thead>tr>th {
+		width: 100% !important;
+		height: 40px !important;
+		padding: 0px !important;
+		border-bottom: 1px solid #ccc;
+	}
+	#datatable>tbody>tr>td {
+		width: 100% !important;
+		height: 40px !important;
+		padding: 0px !important;
+	}
+	#datatable>thead>tr {
+		padding: 0px !important;
+	}
+	#datatable>thead {
+		width: 30% !important;
+		font-size: 12px;
+	}
+	#datatable>tbody {
+		width: 69% !important;
+	}
+	table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.dataTable.display tbody th, table.dataTable.display tbody td {
+		border-top: 1px solid #ddd !important;
+	}
+}

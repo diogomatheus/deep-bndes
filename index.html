@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Deep BNDES - Mergulhando nos fundos de investimento do banco</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <meta name="description" content="Este projeto visa ajudar as pessoas a darem um mergulho profundo nos fundos que compõem a carteira de investimentos do BNDES. Para isso, desenvolvemos uma plataforma chamada Deep BNDES. Essa plataforma oferece uma visualização de dados interativa, baseada nos datasets disponibilizados pelo BNDES e CVM.">
+        <meta name="keywords" content="BNDES, CVM, Deep BNDES, mergulho, profundo, fundos de investimento, carteira de investimentos, plataforma, visualização de dados, interativa, interatividade, dataset, aprendizado, aprender">
+        <meta name="robots" content="all" />
+
+        <link rel="shortcut icon" href="image/favicon/favicon.png" type="image/ico"/>
+        <link rel="apple-touch-icon-precomposed" sizes="57x57" href="image/favicon/apple-touch-icon-iphone.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="image/favicon/apple-touch-icon-ipad.png"/>
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="image/favicon/apple-touch-icon-iphone-retina.png"/>
+
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Import Materialize plugin -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+        <!-- Import AMCHARTS plugin -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <!-- Import DataTables plugin -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.25/r-2.2.9/datatables.min.css"/>
+        <!--Import application style-->
+        <link type="text/css" rel="stylesheet" href="application.css" rel="stylesheet" />
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div id="loading"></div>
+        <header class="valign-wrapper z-depth-2">
+            <div class="container">
+                <div class="row valign-wrapper">
+                    <div class="col s6">
+                        <a href="https://diogomatheus.github.io/deep-bndes/" title="Deep BNDES">
+                            <img id="project-logo" class="responsive-img" src="image/logo.png">
+                        </a>
+                        <blockquote>
+                            Mergulhando nos fundos de investimento do banco</br>
+                            <span class="hide-on-small-only">Caixa preta? Só para quem está de olhos fechados!</span>
+                        </blockquote>
+                    </div>
+                    <div class="col s6 right-align">
+                        <div id="project-authors">
+                            <a href="https://www.linkedin.com/in/diogomatheuscosta/" title="Diogo Matheus">
+                                <img src="image/collaborators/diogo-matheus.jfif" alt="Diogo Matheus" class="circle responsive-img">
+                            </a>
+                            <a href="https://www.linkedin.com/in/gabrielhidd/" title="Gabriel Hidd">
+                                <img src="image/collaborators/gabriel-hidd.jfif" alt="Gabriel Hidd" class="circle responsive-img">
+                            </a>
+                            <a href="https://www.linkedin.com/in/yuri-lima-brasil/" title="Yuri Lima">
+                                <img src="image/collaborators/yuri-lima.jfif" alt="Yuri Lima" class="circle responsive-img">
+                            </a>
+                        </div>
+                        <div id="project-information">Ano de ref. (BNDES): 2021</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div id="amcharts-force-directed-tree"></div>
+        </main>
+
+        <!-- Menu (FAB) -->
+        <div class="fixed-action-btn">
+            <a id="fixed-floating-menu" class="btn-floating btn-large red waves-effect waves-light pulse tooltipped" data-position="left" data-tooltip="Menu">
+                <i class="large material-icons">menu</i>
+            </a>
+            <ul>
+                <li>
+                    <a class="btn-floating red tooltipped modal-trigger" href="#datatable-modal" data-position="left" data-tooltip="Visualizar dados tabulados">
+                        <i class="material-icons">table_view</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating yellow darken-1 tooltipped" href="dataset/deep-bndes-dataset.json" target="_blank" rel="noopener noreferrer" data-position="left" data-tooltip="Baixar dados">
+                        <i class="material-icons">get_app</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating green tooltipped modal-trigger" href="#help-modal" data-position="left" data-tooltip="Material de apoio">
+                        <i class="material-icons">tips_and_updates</i>
+                    </a>
+                </li>
+                <li>
+                    <a class="btn-floating blue tooltipped modal-trigger" href="#info-modal" data-position="left" data-tooltip="Informações do projeto">
+                        <i class="material-icons">info</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Visualizar dados tabulados (Modal) -->
+        <div id="datatable-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 class="center-align">Visualizar dados tabulados</h4>
+                <table id="datatable" class="display responsive-table" width="100%"></table>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+            </div>
+        </div>
+
+        <!-- Material de apoio (Modal) -->
+        <div id="help-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 class="center-align">Material de apoio</h4>
+                <iframe width="100%" height="90%" src="https://sway.office.com/s/hZG9AFl8KWBwRRCV/embed" frameborder="0" marginheight="auto" marginwidth="auto" max-width="100%" sandbox="allow-forms allow-modals allow-orientation-lock allow-popups allow-same-origin allow-scripts" scrolling="no" style="border: none; max-width: 100%; max-height: 100vh" allowfullscreen mozallowfullscreen msallowfullscreen webkitallowfullscreen></iframe>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+            </div>
+        </div>
+
+        <!-- Informações do projeto (Modal) -->
+        <div id="info-modal" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4 class="center-align">Informações do projeto</h4>
+                </br>
+                <h5>Prêmio Dados Abertos para o Desenvolvimento</h5>
+                <p>O Prêmio Dados Abertos para o Desenvolvimento é uma iniciativa do BNDES para incentivar a colaboração entre governo e sociedade e para estimular o desenvolvimento de estudos, análises e soluções de empreendedorismo tecnológico que contribuam para aprimorar e modernizar a gestão pública.</p>
+                <h5>Projeto Deep BNDES (Versão beta)</h5>
+                <p>Este projeto visa ajudar as pessoas a darem um mergulho profundo nos fundos que compõem a carteira de investimentos do BNDES. Para isso, desenvolvemos uma plataforma chamada Deep BNDES. Essa plataforma oferece uma visualização de dados interativa, baseada nos datasets disponibilizados pelo BNDES e CVM. Por meio dos recursos ofertados pela plataforma os usuários podem aprender mais sobre fundos de investimento de forma geral e navegar pelos fundos nos quais o BNDES investe para saber mais sobre cada um.</p>
+                <h5>Repositório do projeto</h5>
+                <p><a href="https://github.com/diogomatheus/deep-bndes" title="GitHub">Repositório do projeto no GitHub</a></p>
+                <h5>Colaboradores (Time 25)</h5>
+                <ul class="collection">
+                    <li class="collection-item avatar">
+                        <img src="image/collaborators/diogo-matheus.jfif" alt="Diogo Matheus Costa" class="circle">
+                        <span class="title">Diogo Matheus Costa</span>
+                        <p>
+                            M.Sc. em Engenharia de Sistemas e Computação</br>
+                            Engenheiro de Software
+                        </p>
+                        <a href="https://www.linkedin.com/in/diogomatheuscosta/" title="Linkedin" class="secondary-content">
+                            <img src="image/social-media/linkedin.png" alt="Linkedin" width="25">
+                        </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="image/collaborators/gabriel-hidd.jfif" alt="Gabriel Hidd" class="circle">
+                        <span class="title">Gabriel Hidd</span>
+                        <p>
+                            M.Sc. em Economia</br>
+                            Cientista de Dados
+                        </p>
+                        <a href="https://www.linkedin.com/in/gabrielhidd/" title="Linkedin" class="secondary-content">
+                            <img src="image/social-media/linkedin.png" alt="Linkedin" width="25">
+                        </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="image/collaborators/yuri-lima.jfif" alt="Yuri Oliveira de Lima" class="circle">
+                        <span class="title">Yuri Oliveira de Lima</span>
+                        <p>
+                            D.Sc. em Engenharia de Sistemas e Computação</br>
+                            Engenheiro de Produção
+                        </p>
+                        <a href="https://www.linkedin.com/in/yuri-lima-brasil/" title="Linkedin" class="secondary-content">
+                            <img src="image/social-media/linkedin.png" alt="Linkedin" width="25">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Fechar</a>
+            </div>
+        </div>
+
+        <!-- Import Materialize -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <!-- Import AMCHARTS -->
+        <script type="text/javascript" src="https://cdn.amcharts.com/lib/4/core.js"></script>
+        <script type="text/javascript" src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+        <script type="text/javascript" src="https://cdn.amcharts.com/lib/4/plugins/forceDirected.js"></script>
+        <script type="text/javascript" src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+        <script type="text/javascript" src="https://cdn.amcharts.com/lib/4/lang/pt_BR.js"></script>
+        <!-- Import DataTables -->
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.25/r-2.2.9/datatables.min.js"></script>
+        <!-- Import Deep BNDES dataset -->
+        <script type="text/javascript" src="deep-bndes-dataset.js"></script>
+        <!-- Import application script -->
+        <script type="text/javascript" src="application.js"></script>
+    </body>
+</html>
