@@ -1,33 +1,38 @@
-# Deep BNDES - Mergulhando nos fundos de investimento do banco (Versão beta)
-Este projeto visa ajudar as pessoas a darem um mergulho profundo nos fundos que compõem a carteira de investimentos do BNDES. Para isso, desenvolvemos uma plataforma chamada Deep BNDES. Essa plataforma oferece uma visualização de dados interativa, baseada nos datasets disponibilizados pelo BNDES e CVM. Por meio dos recursos ofertados pela plataforma os usuários podem aprender mais sobre fundos de investimento de forma geral e navegar pelos fundos nos quais o BNDES investe para saber mais sobre cada um.
+# Deep BNDES
 
-## Prêmio Dados Abertos para o Desenvolvimento
-O Prêmio Dados Abertos para o Desenvolvimento é uma iniciativa do BNDES para incentivar a colaboração entre governo e sociedade e para estimular o desenvolvimento de estudos, análises e soluções de empreendedorismo tecnológico que contribuam para aprimorar e modernizar a gestão pública.
+Project developed to participate in the BNDES' (Brazilian development bank) open data initiative, i.e., hackathon.
 
-## O que foi utilizado na solução?
+The project offers an interactive visualization of the data, based on public datasets from BNDES and CVM. Through the resources offered, users can learn more about investment funds and the funds in which BNDES invests.
+
+## Open Data for Development Award
+
+The Open Data for Development Award is an initiative of the BNDES to encourage collaboration between government and society and to encourage the development of studies, analyzes and solutions for technological entrepreneurship that contribute to improving and modernizing public management.
+
+## Technologies
+
 - Website (HTML, CSS & JavaScript)
   - [Materialize](https://materializecss.com/)
   - [AMCHARTS](https://amcharts.com/)
   - [DataTables](https://datatables.net/)
   - [Microsoft Sway](https://sway.office.com/)
 
-- Análise de dados
+- Data analysis
   - [Python](https://www.python.org/)
   - [Pandas](https://pandas.pydata.org/)
 
-- Ferramentas
+- Tools
   - [Visual Studio Code](https://code.visualstudio.com/)
   - [Google Colab](https://colab.research.google.com/)
   - [Google Meet](https://meet.google.com/)
 
-- Datasets públicos
-  - [BNDES - Fundos de Investimentos](https://dadosabertos.bndes.gov.br/dataset/renda-variavel)
-  - [CVM - Informe Trimestral](http://dados.cvm.gov.br/dataset/fip-doc-inf_trimestral)
-  - [CVM - Composição e Diversificação das Aplicações](http://dados.cvm.gov.br/dataset/fi-doc-cda)
+- Public datasets
+  - [BNDES - Investment Funds](https://dadosabertos.bndes.gov.br/dataset/renda-variavel)
+  - [CVM - Quarterly Report](http://dados.cvm.gov.br/dataset/fip-doc-inf_trimestral)
+  - [CVM - Composition and Diversification of Applications](http://dados.cvm.gov.br/dataset/fi-doc-cda)
 
 *KISS Principle - Keep It Simple, Stupid!*
 
-## Colaboradores (Time 25)
+## Collaborators (Team 25)
 - [Diogo Matheus Costa](https://www.linkedin.com/in/diogomatheuscosta/)
 - [Gabriel Hidd](https://www.linkedin.com/in/gabrielhidd/)
 - [Yuri Oliveira de Lima](https://www.linkedin.com/in/yuri-lima-brasil/)
